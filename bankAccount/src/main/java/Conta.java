@@ -1,16 +1,16 @@
 public class Conta {
-    int id;
+    private int id;
     private double saldo;
-    String titular;
-    String agencia;
-    String dataAbertura;
+    private String titular;
+    private String agencia;
+    private Data data;
 
-    public Conta(int id, double saldo, String titular, String agencia, String dataAbertura) {
+    public Conta(int id, double saldo, String titular, String agencia, int dia, int mes, int ano) {
         this.id = id;
         this.saldo = saldo;
         this.titular = titular;
         this.agencia = agencia;
-        this.dataAbertura = dataAbertura;
+        this.data = new Data(dia, mes, ano);
     }
 
     public void saque(double valor) {
@@ -29,6 +29,13 @@ public class Conta {
         return (this.saldo * 0.1);
     }
 
+    public void recuperaDadosParaImpressao() {
+        System.out.println(this.id);
+        System.out.println(this.titular);
+        System.out.println(this.saldo);
+        System.out.println(this.agencia);
+        System.out.println(this.data.getDia() + "/" + this.data.getMes() + "/" + this.data.getAno());
+    }
     public int getId() {
         return id;
     }
@@ -44,7 +51,4 @@ public class Conta {
         return agencia;
     }
 
-    public String getDataAbertura() {
-        return dataAbertura;
-    }
 }
